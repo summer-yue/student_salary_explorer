@@ -38,7 +38,8 @@ mongodb.MongoClient.connect(uri, function(err, db) {
     while (flag && page < 76){
         var queryUrl = "https://api.data.gov/ed/collegescorecard/v1/schools.json?api_key=BQ7FffD1wSmE5xNs7BIWjY1tEXr8jMfx36BrBk84&\
 _per_page=100&_page=" + page + 
-"&_fields=id,school.name,2015.cost.tuition.out_of_state,2015.cost.tuition.in_state,2015.cost.avg_net_price.public,2015.cost.avg_net_price.private"
+"&_fields=id,school.name,2015.cost.tuition.out_of_state,2015.cost.tuition.in_state,2015.cost.avg_net_price.public,2015.cost.avg_net_price.private,\
+2015.admissions.admission_rate.overall,school.state,school.city,2015.student.size,school.school_url"
 
         json_data = httpGet(queryUrl)
 
@@ -57,6 +58,11 @@ _per_page=100&_page=" + page +
                 new_dict["in_state_tuition"] = dict["2015.cost.tuition.in_state"];
                 new_dict["avg_net_price_public"] = dict["2015.cost.avg_net_price.public"];
                 new_dict["school_name"] = dict["school.name"];
+                new_dict["admissions_rate"] = dict["2015.admissions.admission_rate.overall"]
+                new_dict["state"] = dict["school.state"]
+                new_dict["city"] = dict["school.city"]
+                new_dict["student_number"] = dict["2015.student.size"]
+                new_dict["school_url"] = dict["school.school_url"]
                 
                 counter = counter + 1
                 new_results.push(new_dict);
