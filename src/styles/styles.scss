@@ -20,12 +20,12 @@ nav a {
 
 @import '~@angular/material/_theming';
 
-// NOTE: Theming is currently experimental and not yet publicly released!
+// NOTE from Summer: Feel free to change the theme colors here as you see fitted.
 
 @include mat-core();
 
-$primary: mat-palette($mat-light-blue);
-$accent:  mat-palette($mat-amber, A200, A100, A400);
+$primary: mat-palette($mat-green);
+$accent:  mat-palette($mat-green, A200);
 
 $theme: mat-light-theme($primary, $accent);
 

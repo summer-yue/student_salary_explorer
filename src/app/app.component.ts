@@ -21,8 +21,8 @@ import { PostsService } from './posts/posts.service';
   template: `
     <header>
       <mat-toolbar color="primary">
-        <a [routerLink]="['/']" class="logotTxt">MEAN</a>
-        <a class="links" [routerLink]="['/posts']">Posts</a>
+        <a [routerLink]="['/']" class="logotTxt">Student Salary Explorer</a>
+        <!-- <a class="links" [routerLink]="['/posts']">Posts</a> -->
       </mat-toolbar>
     </header>
     <router-outlet></router-outlet>
@@ -31,10 +31,10 @@ import { PostsService } from './posts/posts.service';
   `,
   providers: [PostsService]
 })
+
 export class AppComponent implements OnInit {
-  public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'Mean stack starter';
-  public url = 'https://mean.io';
+  public name = 'Student Salary Explorer';
+  public url = 'TBD';
 
   constructor(
     public appState: AppState
@@ -43,13 +43,4 @@ export class AppComponent implements OnInit {
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
   }
-
 }
-
-/**
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */
