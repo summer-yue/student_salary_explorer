@@ -4,5 +4,4 @@ angular.module('mainController', []) /*injecting services used*/
 .controller('mainCtrl', function($scope) {
     var app = this;
     app.loadme = false; // Hide main HTML until data is obtained in AngularJS
-    if ($window.location.pathname === '/') app.home = true;
 });

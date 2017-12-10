@@ -7,8 +7,12 @@ var app = angular.module('appRoutes', ['ngRoute'])
     $routeProvider
 
     // Route: Home             
-        .when('/', {
+    .when('/', {
         templateUrl: 'app/views/pages/home.html'
+    })
+
+    .when('/by_college', {
+        templateUrl: 'app/views/pages/by_college.html'
     })
 
     .otherwise({ redirectTo: '/' }); // If user tries to access any other route, redirect to home page
