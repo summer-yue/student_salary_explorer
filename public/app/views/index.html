@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Main Angular Files -->
+    <script src="assets/js/angular.js"></script>
+    <script src="assets/js/angular-route.js"></script>
+    <script src="assets/js/angular-animate.js"></script>
+
+    <!-- Angular Config/Routes -->
+    <script src="app/app.js"></script>
+    <script src="app/routes.js"></script>
+
+    <!-- Angular Controllers -->
+    <script src="app/controllers/mainCtrl.js"></script>
+
+    <!-- Cascade Style Sheets -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+
+    <title>Student Salary Explorer</title>
+
+</head>
+
+<body ng-app="userApp" ng-controller="mainCtrl as main" ng-cloak>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="/">Student Salary Explorer</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden active">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="">
+                        <a class="page-scroll" href="/">Home</a> 
+                    </li>
+                    <li class="">
+                        <a class="page-scroll" href="/by_major">Majors</a>
+                    </li>
+                    <li class="">
+                        <a class="page-scroll" href="/by_college">Colleges</a>
+                    </li>
+                    <li class="">
+                        <a class="page-scroll" href="/by_salary">Salary</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <!-- Angular View -->
+                <div ng-view></div>
+                <!-- Angular View -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section ng-show="main.home" id="portfolio" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <h2>Developers</h2>
+                    <h3 class="col-6 section-subheading text-muted">
+                        This is a 450 Databases Project by Summer Yue, Joy Wang, Madeline Gelfand and Lawrence Chan. <br> 
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer ng-show="main.home">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright © CIS450 Team</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery-3.1.1.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+</body>
+
+</html>
