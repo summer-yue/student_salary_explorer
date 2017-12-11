@@ -1,58 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <base href="/">
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <!-- Main Angular Files -->
-        <script src="assets/js/angular.js"></script>
-        <script src="assets/js/angular-route.js"></script>
-        <script src="assets/js/angular-animate.js"></script>
-
-        <!-- Angular Config/Routes -->
-        <script src="app/app.js"></script>
-        <script src="app/routes.js"></script>
-
-        <!-- Angular Controllers -->
-        <script src="app/controllers/mainCtrl.js"></script>
-        <script src="app/controllers/byCollegeCtrl.js"></script>
-
-        <!-- Cascade Style Sheets -->
-        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
-
-        <title>Student Salary Explorer</title>
-    </head>
-
-    <body ng-app="userApp" ng-controller="byCollegeCtrl as byCollege" ng-cloak>
-        <!-- Navigation -->
-        <div class="navbar" ng-include="'./app/views/partials/nav.html'"></div>
-
-        <div class="row text-center" ng-controller="byCollegeCtrl as byCollege">
-            <div class="container">
-                <h3 class="section-heading">By College</h3>
-                <p>
-                    Let's explore the admission rate, location (state and city), school size, average cost, average net price and demographics distribution for colleges you are interested in!
-                </p>
-                <p>
-                    {{current_college_info}}  
-                </p>
-            </div>
-            <!-- Display dummy info from Mongo DB-->
-        </div>
-
-        <!-- Footer -->
-        <div class="footer" ng-include="'./app/views/partials/footer.html'"></div>
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="assets/js/jquery-3.1.1.min.js"></script>
-        <script src="assets/js/bootstrap.js"></script>
-    </body>
-</html>
+<div class="container" ng-controller="byCollegeCtrl as byCollege">
+    <h3 class="section-heading">By College</h3>
+    <p>
+        Let's explore the admission rate, location (state and city), school size, average cost, average net price and demographics distribution for colleges you are interested in!
+    </p>
+    <p>
+        {{current_college_info}}  
+    </p>
+</div>
