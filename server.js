@@ -43,10 +43,6 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/app/views/index.html')); // Set index.html as layout
 });
 
-app.get('/by_college', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/app/views/pages/by_college.html')); // Set by_college.html as layout
-});
-
 // Start Server
 app.listen(port, function() {
     console.log('Running the server on port ' + port); // Listen on configured port

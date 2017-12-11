@@ -30,35 +30,16 @@
     <title>Student Salary Explorer</title>
 </head>
 
-<body ng-app="userApp" ng-controller="mainCtrl as main" ng-cloak>
+<body ng-app="userApp">
     <!-- Navigation -->
     <div class="navbar" ng-include="'./app/views/partials/nav.html'"></div>
 
     <section id="services">
         <div class="container">
             <div class="row">
-                <div class="row text-center">
-                    <div class="container">
-                        <h3 class="section-heading">Home</h3>
-                        <p>
-                            Hello world, welcome to the student salary explorer web application. We want to understand how salaries data are related to colleges, majors and school demographics.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Grid Section -->
-    <section id="portfolio" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="text-center">
-                    <h2>Developers</h2>
-                    <h3 class="col-6 section-subheading text-muted">
-                        This is a 450 Databases Project by Summer Yue, Joy Wang, Madeline Gelfand and Lawrence Chan. <br> 
-                    </h3>
-                </div>
+                <!-- Angular View -->
+                <div ng-view></div>
+                <!-- Angular View -->
             </div>
         </div>
     </section>

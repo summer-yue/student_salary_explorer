@@ -16,6 +16,5 @@ var app = angular.module('appRoutes', ['ngRoute'])
     })
 
     .otherwise({ redirectTo: '/' }); // If user tries to access any other route, redirect to home page
-
 });
 
