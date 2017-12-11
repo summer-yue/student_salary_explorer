@@ -6,8 +6,9 @@ angular.module('byCollegeController', []) /*injecting services used*/
     var app = this;
     app.loadme = false; // Hide main HTML until data is obtained in AngularJS
 
-    console.log("Entering by college controller api");
-    $http.get('/api/college_info/temp').success(function(data){
-        console.log(data);
+    //console.log("Entering by college controller api");
+    $http.get('/api/college_info/temp').success(function(result){
+        $scope.current_college_info = result.data;
+        // console.log(result);
     });
 });
