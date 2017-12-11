@@ -8,11 +8,11 @@ var app = angular.module('appRoutes', ['ngRoute'])
 
     // Route: Home             
     .when('/', {
-        templateUrl: 'app/views/pages/home.html'
+        templateUrl: 'app/views/pages/home.html', controller: 'mainCtrl'
     })
 
     .when('/by_college', {
-        templateUrl: 'app/views/pages/by_college.html'
+        templateUrl: 'app/views/pages/by_college.html', controller: 'byCollegeCtrl'
     })
 
     .otherwise({ redirectTo: '/' }); // If user tries to access any other route, redirect to home page
