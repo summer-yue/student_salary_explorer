@@ -28,54 +28,23 @@
     <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
 
     <title>Student Salary Explorer</title>
-
 </head>
 
 <body ng-app="userApp" ng-controller="mainCtrl as main" ng-cloak>
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top navbar-shrink">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="/">Student Salary Explorer</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden active">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="">
-                        <a class="page-scroll" href="/">Home</a> 
-                    </li>
-                    <li class="">
-                        <a class="page-scroll" href="/by_major">Majors</a>
-                    </li>
-                    <li class="">
-                        <a class="page-scroll" href="/by_college">Colleges</a>
-                    </li>
-                    <li class="">
-                        <a class="page-scroll" href="/by_salary">Salary</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+    <div class="navbar" ng-include="'./app/views/partials/nav.html'"></div>
 
     <section id="services">
         <div class="container">
             <div class="row">
-                <!-- Angular View -->
-                <div ng-view></div>
-                <!-- Angular View -->
+                <div class="row text-center">
+                    <div class="container">
+                        <h3 class="section-heading">Home</h3>
+                        <p>
+                            Hello world, welcome to the student salary explorer web application. We want to understand how salaries data are related to colleges, majors and school demographics.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -94,15 +63,8 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <span class="copyright">Copyright © CIS450 Team</span>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer -->
+    <div class="footer" ng-include="'./app/views/partials/footer.html'"></div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
