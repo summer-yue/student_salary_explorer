@@ -11,9 +11,8 @@ app.use(bodyParser.json()); // Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 app.use(express.static(__dirname + '/public')); // Allow front end to access public folder
 
-// 
-// <---------- REPLACE WITH YOUR MONGOOSE CONFIGURATION ---------->
-// 
+// <---------- MONGOOSE CONFIGURATION ---------->
+
 mongoose.connect('mongodb://summer:cis550@ds119302.mlab.com:19302/cis450mongo');
 var db = mongoose.connection;
 
@@ -44,11 +43,9 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/app/views/index.html')); // Set index.html as layout
 });
 
-// TBD: index should always be the beginning layout?
-// Can't go directly to by_college, do we want that?
-// app.get('/by_college', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/public/app/views/pages/by_college.html')); // Set by_college.html as layout
-// });
+app.get('/by_college', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/app/views/pages/by_college.html')); // Set by_college.html as layout
+});
 
 // Start Server
 app.listen(port, function() {

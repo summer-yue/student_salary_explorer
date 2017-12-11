@@ -17,6 +17,5 @@ var app = angular.module('appRoutes', ['ngRoute'])
 
     .otherwise({ redirectTo: '/' }); // If user tries to access any other route, redirect to home page
 
-    $locationProvider.html5Mode({ enabled: true, requireBase: false }); // Required to remove AngularJS hash from URL (no base is required in index file)
 });
 
