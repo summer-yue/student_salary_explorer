@@ -71,13 +71,19 @@ sql_con.connect(function(err) {
     app.get('/api/major_salary_info/:major', function (req, res) {
         //Convert to all caps
         major = req.params.major.toUpperCase();
-        query_find_major_salary = "SELECT DISTINCT major_name, starting_median_salary, mid_career_salary\
-            FROM salary_by_degree\
+        query_find_major_salary = "SELECT DISTINCT major_name, median_salary\
+            FROM major\
             WHERE major_name = '" + major + "';";
 
         sql_con.query(query_find_major_salary, function (err, result, fields) {
             if (err)  {
                 res.json({ success: false, error: err});
+            }
+            if (result == []) {
+                result = {
+                    "major_name": major,
+                    "median_salary": 0,
+                }
             }
             res.json({ success: true, data: result});
         });

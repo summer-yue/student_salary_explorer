@@ -5,9 +5,9 @@ angular.module('byMajorController', []) /*injecting services used*/
 .controller('byMajorCtrl', function($scope, $http, utilService) {
     var app = this;
     app.loadme = false; // Hide main HTML until data is obtained in AngularJS
-    $scope.major_salary_results = "Looking ...";
-    $scope.major_gender_distribution = ""; //{men, women, others}
-    $scope.unemployment_rate = ""; //{employed, unemployed}
+    $scope.major_salary_results = [];
+    $scope.major_gender_distribution = []; //{men, women, others}
+    $scope.unemployment_rates = []; //{employed, unemployed}
 
     //console.log("Entering by major controller api");
    
@@ -24,6 +24,30 @@ angular.module('byMajorController', []) /*injecting services used*/
     //The function binds to the "Explore" button. 
     //It queries the SQL APIs and display all the relavant graphs.
     $scope.display_graph_on_majors = function() {
-        //Fill in the dictionary list for [{major, starting_salary, median_salary} ...] for selected majors
+        //Fill in the dictionary list for [{major, starting_salary, mid_career_salary} ...] for selected majors
+        $scope.selected_majors.forEach(function(major) {
+            $http.get('/api/major_salary_info/' + major).success(function(result){
+                $scope.major_salary_results.push({
+                    "major_name": major,
+                    "median_salary": result.data[0]["median_salary"]
+                })
+            })
+
+            $http.get('/api/major_gender_employment_info/' + major).success(function(result){
+                $scope.major_gender_distribution.push({
+                    "major_name": major,
+                    "total": result.data[0]["total"],
+                    "men": result.data[0]["men"],
+                    "women": result.data[0]["women"],
+                    "others": result.data[0]["all"] - result.data[0]["women"] - result.data[0]["men"],
+                })
+
+                $scope.unemployment_rates.push({
+                    "major_name": major,
+                    "unemployment_rate": result.data[0]["unemployment_rate"]
+                })
+            })
+          
+        })
     }
 });
