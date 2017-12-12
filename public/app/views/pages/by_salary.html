@@ -3,4 +3,25 @@
     <p>
         Let's explore majors and colleges with the median salaries that fall into selected range.
     </p>
+    <p>
+        Please select a range of median salaries: <br>
+        Salary lower bound <br> <input type='number' ng-model='salary_range_low'><br>
+        Salary upper bound <br> <input type='number' ng-model='salary_range_high'> 
+        <button style="float:right" class="btn-success" ng-click="display_college_major_in_range()" >Search</button>
+    </p>
+    <br>
+    <br>
+
+    <div class="row">
+        <p>
+            Colleges in the selected median salary range: <br>
+            {{colleges_in_range}}
+        </p>
+        <br>
+        <p>
+            Majors in the selected median salary range: <br>
+            {{majors_in_range}}
+        </p>
+    </div>
+ 
 </div>
