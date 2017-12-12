@@ -1,4 +1,5 @@
-angular.module('userApp', ['appRoutes', 'mainController', 'byCollegeController'])
+angular.module('userApp', ['appRoutes', 'mainController', 'byCollegeController',
+    'bySalaryController'])
 
 .config(function($httpProvider) {
     

@@ -37,6 +37,26 @@ db.once('open', function () {
             });
         }
     })
+
+    //Params: 2 numbers indicating the range of salaries we are looking at
+    //Return the colleges in a json list, indicating the colleges
+    //whose median salary falls into range salary_range_low to salary_range_high, order doesn't matter
+    app.get('/api/colleges_based_on_salary_range/:salary_range_low/:salary_range_high', function (req, res) {
+        salary_range_low = Math.min(req.params.salary_range_low, req.params.salary_range_high);
+        salary_range_high = Math.max(req.params.salary_range_low, req.params.salary_range_high);
+        //TODO: connect API to SQL by Lawrence
+        res.json({ success: true, data: {college: "Fake college", number_of_people: 1000}});
+    })
+
+    //Params: 2 numbers indicating the range of salaries we are looking at
+    //Return the majors in a json list, indicating the majors
+    //whose median salary falls into range salary_range_low to salary_range_high, order doesn't matter
+    app.get('/api/majors_based_on_salary_range/:salary_range_low/:salary_range_high', function (req, res) {
+        salary_range_low = Math.min(req.params.salary_range_low, req.params.salary_range_high);
+        salary_range_high = Math.max(req.params.salary_range_low, req.params.salary_range_high);
+        //TODO: connect API to SQL by Lawrence
+        res.json({ success: true, data: {major: "Fake major", number_of_people: 100}});
+    })
 })
 
 app.get('/', function(req, res) {
