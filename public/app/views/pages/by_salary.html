@@ -13,15 +13,21 @@
     <br>
 
     <div class="row">
-        <p>
-            Colleges in the selected median salary range: <br>
-            {{colleges_in_range}}
-        </p>
-        <br>
-        <p>
-            Majors in the selected median salary range: <br>
-            {{majors_in_range}}
-        </p>
+        <div class="col-md-6">
+            <p>
+                Colleges in the selected median salary range: <br>
+                <li ng-repeat="(index, data) in colleges_in_range">
+                    {{data.school_name}}:    {{data.starting_median_salary}}
+                </li>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p>
+                Majors in the selected median salary range: <br>
+                <li ng-repeat="(index, data) in majors_in_range">
+                    {{data.major_name}}:    {{data.median_salary}}
+                </li>
+            </p>
+        </div>
     </div>
- 
 </div>
