@@ -41,7 +41,6 @@ sql_con.connect(function(err) {
             if (err)  {
                 res.json({ success: false, error: err});
             }
-            console.log(result);
             res.json({ success: true, data: result});
         });
     })
@@ -63,7 +62,41 @@ sql_con.connect(function(err) {
             if (err)  {
                 res.json({ success: false, error: err});
             }
-            console.log(result);
+            res.json({ success: true, data: result});
+        });
+    })
+
+    //Look up salaries (including starting and mid career) by majors
+    //major's capitalization does not matter
+    app.get('/api/major_salary_info/:major', function (req, res) {
+        //Convert to all caps
+        major = req.params.major.toUpperCase();
+        query_find_major_salary = "SELECT DISTINCT major_name, starting_median_salary, mid_career_salary\
+            FROM salary_by_degree\
+            WHERE major_name = '" + major + "';";
+
+        sql_con.query(query_find_major_salary, function (err, result, fields) {
+            if (err)  {
+                res.json({ success: false, error: err});
+            }
+            res.json({ success: true, data: result});
+        });
+    })
+
+    //Look up gender distributions and employment by majors
+    //major's capitalization does not matter
+    app.get('/api/major_gender_employment_info/:major', function (req, res) {
+        //Convert to all caps
+        major = req.params.major.toUpperCase();
+        query_find_major_gender_employment = "SELECT DISTINCT major_name, total, men, women,\
+            unemployed/total AS unemployment_rate\
+            FROM major\
+            WHERE major_name = '" + major + "';";
+
+        sql_con.query(query_find_major_gender_employment, function (err, result, fields) {
+            if (err)  {
+                res.json({ success: false, error: err});
+            }
             res.json({ success: true, data: result});
         });
     })
