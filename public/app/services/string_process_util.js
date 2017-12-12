@@ -4,6 +4,10 @@ app.factory('utilService', function() {
         capitalizeFirstLetter: function(str) {
             str = str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
             return str.replace("And", "and");
+        },
+
+        firstWord: function(str) {
+            return str.substr(0, str.indexOf(' ')); 
         }
     };
 });
