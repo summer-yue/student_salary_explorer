@@ -11,6 +11,64 @@ app.use(bodyParser.json()); // Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true })); // For parsing application/x-www-form-urlencoded
 app.use(express.static(__dirname + '/public')); // Allow front end to access public folder
 
+// <---------- SQL CONFIGURATION ---------->
+var mysql = require('mysql');
+var sql_con = mysql.createConnection({
+  host: "joy450db.cxhh83fv1ksp.us-west-2.rds.amazonaws.com",
+  user: "joy450team",
+  password: "iamjoyspassword",
+  database: "450schema"
+});
+
+sql_con.connect(function(err) {
+    if (err) throw err;
+    console.log('Successfully connected to MySQL');
+
+    //Params: 2 numbers indicating the range of salaries we are looking at
+    //Return the colleges in a json list, indicating the colleges
+    //whose median salary falls into range salary_range_low to salary_range_high, order doesn't matter
+    app.get('/api/colleges_based_on_salary_range/:salary_range_low/:salary_range_high', function (req, res) {
+        salary_range_low = Math.min(req.params.salary_range_low, req.params.salary_range_high);
+        salary_range_high = Math.max(req.params.salary_range_low, req.params.salary_range_high);
+   
+        query_find_colleges = "SELECT school_name, starting_median_salary\
+            FROM salary_by_region\
+            WHERE starting_median_salary >= " + salary_range_low + 
+            " AND starting_median_salary <= " + salary_range_high +
+            " ORDER BY starting_median_salary DESC;"
+
+        sql_con.query(query_find_colleges, function (err, result, fields) {
+            if (err)  {
+                res.json({ success: false, error: err});
+            }
+            console.log(result);
+            res.json({ success: true, data: result});
+        });
+    })
+
+    //Params: 2 numbers indicating the range of salaries we are looking at
+    //Return the majors in a json list, indicating the majors
+    //whose median salary falls into range salary_range_low to salary_range_high, order doesn't matter
+    app.get('/api/majors_based_on_salary_range/:salary_range_low/:salary_range_high', function (req, res) {
+        salary_range_low = Math.min(req.params.salary_range_low, req.params.salary_range_high);
+        salary_range_high = Math.max(req.params.salary_range_low, req.params.salary_range_high);
+
+        query_find_majors = "SELECT major_name, median_salary\
+            FROM major\
+            WHERE median_salary >= " + salary_range_low + 
+            " AND median_salary <= " + salary_range_high +
+            " ORDER BY median_salary DESC;"
+
+        sql_con.query(query_find_majors, function (err, result, fields) {
+            if (err)  {
+                res.json({ success: false, error: err});
+            }
+            console.log(result);
+            res.json({ success: true, data: result});
+        });
+    })
+});
+
 // <---------- MONGOOSE CONFIGURATION ---------->
 
 mongoose.connect('mongodb://summer:cis550@ds119302.mlab.com:19302/cis450mongo');
@@ -36,26 +94,6 @@ db.once('open', function () {
                 res.json({ success: true, data: result});
             });
         }
-    })
-
-    //Params: 2 numbers indicating the range of salaries we are looking at
-    //Return the colleges in a json list, indicating the colleges
-    //whose median salary falls into range salary_range_low to salary_range_high, order doesn't matter
-    app.get('/api/colleges_based_on_salary_range/:salary_range_low/:salary_range_high', function (req, res) {
-        salary_range_low = Math.min(req.params.salary_range_low, req.params.salary_range_high);
-        salary_range_high = Math.max(req.params.salary_range_low, req.params.salary_range_high);
-        //TODO: connect API to SQL by Lawrence
-        res.json({ success: true, data: {college: "Fake college", number_of_people: 1000}});
-    })
-
-    //Params: 2 numbers indicating the range of salaries we are looking at
-    //Return the majors in a json list, indicating the majors
-    //whose median salary falls into range salary_range_low to salary_range_high, order doesn't matter
-    app.get('/api/majors_based_on_salary_range/:salary_range_low/:salary_range_high', function (req, res) {
-        salary_range_low = Math.min(req.params.salary_range_low, req.params.salary_range_high);
-        salary_range_high = Math.max(req.params.salary_range_low, req.params.salary_range_high);
-        //TODO: connect API to SQL by Lawrence
-        res.json({ success: true, data: {major: "Fake major", number_of_people: 100}});
     })
 })
 
