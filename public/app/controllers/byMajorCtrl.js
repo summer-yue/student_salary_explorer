@@ -56,13 +56,14 @@ angular.module('byMajorController', []) /*injecting services used*/
             display_salary_bar_chart();
 
             $scope.major_gender_distribution.forEach(function(major_gender) {
-                gender_data = [
-                    {"label":"Men: " + major_gender["men"], "value": major_gender["men"]}, 
-                    {"label":"Women :" + major_gender["women"], "value": major_gender["women"]}
-                ];
-                display_gender_pie_charts(gender_data, major_gender.major_name);               
+                if (major_gender["men"] != 0 ||  major_gender["women"] != 0) {
+                    gender_data = [
+                        {"label":"Men: " + major_gender["men"], "value": major_gender["men"]}, 
+                        {"label":"Women :" + major_gender["women"], "value": major_gender["women"]}
+                    ];
+                    display_gender_pie_charts(gender_data, major_gender.major_name);  
+                }           
             })
-           
             display_employment_bar_chart();
         }
 
