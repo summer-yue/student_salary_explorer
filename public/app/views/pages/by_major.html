@@ -9,7 +9,9 @@
             <option ng-repeat="major in all_majors">{{major}}</option>
         </select><br>
 
-        <button style="float:right" class="btn-success" ng-click="display_graph_on_majors()" >Explore</button>
+        <button style="float:right" class="btn-success" ng-show="explored == null" ng-click="display_graph_on_majors()">Explore</button>
+
+        <button style="float:right" class="btn-success" ng-show="explored != null" ng-click="reset_page()">Reset</button>
     </p>
     <br>
     <br>
@@ -21,11 +23,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
-            <p>
-                Gender Distribution For Selected Majors </p>             
-            </p>   
-        </div>
+        <p>Gender Distribution For Selected Majors</p>             
         <div id ="gender-pie-chart"></div>
     </div>
 

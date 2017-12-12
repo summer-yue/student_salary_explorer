@@ -2,7 +2,8 @@ angular.module('byMajorController', []) /*injecting services used*/
 
 // Controller: byMajorCtrl is used to handle features related to displaying information on selected majors
 // This controller gets data from SQL databases and display things at /by_major
-.controller('byMajorCtrl', function($scope, $http, utilService) {
+.controller('byMajorCtrl', function($scope, $http, $route, utilService) {
+    $scope.explored = null;
     $scope.salary_data = [10, 20, 30, 40, 60, 80, 20, 50]
     var app = this;
     app.loadme = false; // Hide main HTML until data is obtained in AngularJS
@@ -22,9 +23,14 @@ angular.module('byMajorController', []) /*injecting services used*/
         });
     });
 
+    $scope.reset_page = function() {
+        $route.reload();
+    }
+
     //The function binds to the "Explore" button. 
     //It queries the SQL APIs and display all the relavant graphs.
     $scope.display_graph_on_majors = function() {
+        $scope.explored = true
         $scope.major_salary_results = [];
         $scope.major_gender_distribution = []; //{men, women}
         $scope.unemployment_rates = []; //{employed, unemployed}
