@@ -19,6 +19,10 @@ var app = angular.module('appRoutes', ['ngRoute'])
         templateUrl: 'app/views/pages/by_salary.html', controller: 'bySalaryCtrl'
     })
 
+    .when('/by_major', {
+        templateUrl: 'app/views/pages/by_major.html', controller: 'byMajorCtrl'
+    })
+
     .otherwise({ redirectTo: '/' }); // If user tries to access any other route, redirect to home page
 });
 

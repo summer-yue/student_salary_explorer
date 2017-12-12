@@ -1,0 +1,25 @@
+<div class="container" ng-controller="byMajorCtrl as byMajor">
+    <h3 class="section-heading">By Major</h3>
+    <p>
+        Let's explore infomration about selected majors, including starting and mid career salary, gender distribution and unemployment rate.
+    </p>
+    <p>
+        Please select the majors you are interested in: <br>
+        <select ng-model="selected_majors" multiple>
+            <option ng-repeat="major in all_majors">{{major}}</option>
+        </select><br>
+
+        <button style="float:right" class="btn-success" ng-click="display_graph_on_majors()" >Explore</button>
+    </p>
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                Salary Information For Each Major <br>
+                {{major_salary_results}} <br>  
+            </p>   
+        </div>
+    </div>
+</div>
