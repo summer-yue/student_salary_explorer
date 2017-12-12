@@ -20,6 +20,6 @@ angular.module('bySalaryController', []) /*injecting services used*/
             $scope.majors_in_range = result.data;
         });
 
-        console.log("Salary ranging from " + $scope.salary_range_low + " to " + $scope.salary_range_high);
+        //console.log("Salary ranging from " + $scope.salary_range_low + " to " + $scope.salary_range_high);
     }
 });
