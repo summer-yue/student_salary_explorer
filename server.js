@@ -87,7 +87,8 @@ db.once('open', function () {
         if (college_name === null) {
             res.json({ success: false, message: 'Ensure the college you want to look up is selected' });
         } else {
-            college_score_card.findOne({"_id": 1}, function(err, result) {
+            console.log(college_name);
+            college_score_card.findOne({"school_name": college_name}, function(err, result) {
                 if (err) {
                     res.json({ success: false, message: 'Cannot find this school from the database.' });
                 }

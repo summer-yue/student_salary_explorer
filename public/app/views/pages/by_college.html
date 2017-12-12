@@ -3,7 +3,43 @@
     <p>
         Let's explore the admission rate, location (state and city), school size, average cost, average net price and demographics distribution for colleges you are interested in!
     </p>
+
+
     <p>
-        {{current_college_info}}  
+        Please search for the college name: <br>
+        <br> <input type='text' ng-model='college_name'><br>
+        <button style="float:left" class="btn-success" ng-click="display_college_info()" >Search</button>
+    </p>
+
+    <p>
+        Admission Rate: {{current_college_info.admissions_rate}}  
+    </p>
+
+
+    <p>
+        Location: {{current_college_info.city}}, {{current_college_info.state}}
+    </p>
+
+
+    <p>
+        Average Net Price: {{current_college_info.avg_net_price_private}}  
+    </p>
+
+
+    <p>
+        Out of State Tuition: {{current_college_info.out_of_state_tuition}}  
+    </p>
+
+
+    <p>
+        In State Tuition: {{current_college_info.in_state_tuition}}  
+    </p>
+
+    <p>
+        Student Number: {{current_college_info.student_number}}  
+    </p>
+
+    <p>
+        School Website: {{current_college_info.school_url}}  
     </p>
 </div>
