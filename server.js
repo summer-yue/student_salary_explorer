@@ -31,7 +31,7 @@ sql_con.connect(function(err) {
         salary_range_low = Math.min(req.params.salary_range_low, req.params.salary_range_high);
         salary_range_high = Math.max(req.params.salary_range_low, req.params.salary_range_high);
    
-        query_find_colleges = "SELECT school_name, starting_median_salary\
+        query_find_colleges = "SELECT DISTINCT school_name, starting_median_salary\
             FROM salary_by_region\
             WHERE starting_median_salary >= " + salary_range_low + 
             " AND starting_median_salary <= " + salary_range_high +
@@ -53,7 +53,7 @@ sql_con.connect(function(err) {
         salary_range_low = Math.min(req.params.salary_range_low, req.params.salary_range_high);
         salary_range_high = Math.max(req.params.salary_range_low, req.params.salary_range_high);
 
-        query_find_majors = "SELECT major_name, median_salary\
+        query_find_majors = "SELECT DISTINCT major_name, median_salary\
             FROM major\
             WHERE median_salary >= " + salary_range_low + 
             " AND median_salary <= " + salary_range_high +

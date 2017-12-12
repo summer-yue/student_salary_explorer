@@ -5,16 +5,18 @@ angular.module('bySalaryController', []) /*injecting services used*/
 .controller('bySalaryCtrl', function($scope, $http) {
     var app = this;
     app.loadme = false; // Hide main HTML until data is obtained in AngularJS
-    $scope.colleges_in_range = "Please select range and click search";
-    $scope.majors_in_range = "Please select range and click search";
+    $scope.colleges_in_range = {};
+    $scope.majors_in_range = {};
     //console.log("Entering by salary controller api");
     
     $scope.display_college_major_in_range = function() {
-        $http.get('/api/colleges_based_on_salary_range/1/20').success(function(result){
+        $http.get('/api/colleges_based_on_salary_range/' + $scope.salary_range_low + '/' +
+            $scope.salary_range_high).success(function(result){
             $scope.colleges_in_range = result.data;
         });
 
-        $http.get('/api/majors_based_on_salary_range/1/20').success(function(result){
+        $http.get('/api/majors_based_on_salary_range/' + $scope.salary_range_low + '/' +
+            $scope.salary_range_high).success(function(result){
             $scope.majors_in_range = result.data;
         });
 
