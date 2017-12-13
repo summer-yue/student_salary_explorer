@@ -7,6 +7,9 @@ app.factory('utilService', function() {
         },
 
         firstWord: function(str) {
+            if (str.indexOf(" ") == -1) {
+                return str;
+            }
             return str.substr(0, str.indexOf(' ')); 
         }
     };

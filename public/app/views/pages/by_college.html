@@ -7,19 +7,20 @@
 
     <p>
         Please search for the college name: <br>
-        <br> <input type='text' ng-model='college_name'><br>
-        <button style="float:left" class="btn-success" ng-click="display_college_info()" >Search</button>
+        <br> <input type='text' ng-model='college_name'>
+        <button style="float:right" class="btn-success" ng-click="display_college_info()" >Search</button>
     </p>
-
+    <br>
+    <br>
+    <h3 class="section-heading">Results</h3>
     <p>
         Admission Rate: {{current_college_info.admissions_rate}}  
     </p>
 
 
     <p>
-        Location: {{current_college_info.city}}, {{current_college_info.state}}
+        Location: {{current_college_info.city}} <span ng-hide="current_college_info == {}">,</span> {{current_college_info.state}}
     </p>
-
 
     <p>
         Average Net Price: {{current_college_info.avg_net_price_private}}  
