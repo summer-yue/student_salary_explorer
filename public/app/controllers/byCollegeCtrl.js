@@ -6,9 +6,14 @@ angular.module('byCollegeController', []) /*injecting services used*/
     var app = this;
     app.loadme = false; // Hide main HTML until data is obtained in AngularJS
 
-    //console.log("Entering by college controller api");
-    $http.get('/api/college_info/temp').success(function(result){
-        $scope.current_college_info = result.data;
-        // console.log(result);
-    });
-});
+
+	$scope.current_college_info = {};
+    $scope.display_college_info = function() {
+        $http.get('/api/college_info/' + $scope.college_name).success(function(result){
+            $scope.current_college_info = result.data;
+        });
+
+        // console.log("College name: " + $scope.college_name);
+        // console.log("College name: " + $scope.current_college_info.avg_net_price_private);
+    }
+ });
